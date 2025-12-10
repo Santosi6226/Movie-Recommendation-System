@@ -4,9 +4,10 @@ import { TrendingUp } from "lucide-react";
 
 interface GenrePreferencesProps {
   ratings: UserRatings;
+  yourTasteProfileText: string;
 }
 
-export function GenrePreferences({ ratings }: GenrePreferencesProps) {
+export function GenrePreferences({ ratings, yourTasteProfileText }: GenrePreferencesProps) {
   const preferences = getGenrePreferences(ratings);
   
   if (preferences.length === 0) return null;
@@ -18,7 +19,7 @@ export function GenrePreferences({ ratings }: GenrePreferencesProps) {
     <div className="p-4 rounded-lg gradient-card border border-border/50">
       <div className="flex items-center gap-2 mb-4">
         <TrendingUp className="w-4 h-4 text-secondary" />
-        <h3 className="text-sm font-medium text-foreground">Your Taste Profile</h3>
+        <h3 className="text-sm font-medium text-foreground">{yourTasteProfileText}</h3>
       </div>
 
       <div className="space-y-3">

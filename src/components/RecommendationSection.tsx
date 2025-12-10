@@ -7,6 +7,11 @@ interface RecommendationSectionProps {
   getRating: (movieId: number) => number;
   onRate: (movieId: number, rating: number) => void;
   hasRatings: boolean;
+  recommendedForYouText: string;
+  popularMoviesText: string;
+  basedOnRatingsText: string;
+  rateToGetRecommendationsText: string;
+  yourRatingText: string;
 }
 
 export function RecommendationSection({
@@ -14,6 +19,11 @@ export function RecommendationSection({
   getRating,
   onRate,
   hasRatings,
+  recommendedForYouText,
+  popularMoviesText,
+  basedOnRatingsText,
+  rateToGetRecommendationsText,
+  yourRatingText,
 }: RecommendationSectionProps) {
   if (recommendations.length === 0) return null;
 
@@ -25,12 +35,10 @@ export function RecommendationSection({
         </div>
         <div>
           <h2 className="text-xl font-semibold text-foreground">
-            {hasRatings ? "Recommended For You" : "Popular Movies"}
+            {hasRatings ? recommendedForYouText : popularMoviesText}
           </h2>
           <p className="text-sm text-muted-foreground">
-            {hasRatings
-              ? "Based on your ratings and preferences"
-              : "Rate some movies to get personalized recommendations"}
+            {hasRatings ? basedOnRatingsText : rateToGetRecommendationsText}
           </p>
         </div>
       </div>
@@ -43,6 +51,7 @@ export function RecommendationSection({
             userRating={getRating(movie.id)}
             onRate={(rating) => onRate(movie.id, rating)}
             style={{ animationDelay: `${index * 50}ms` }}
+            yourRatingText={yourRatingText}
           />
         ))}
       </div>
