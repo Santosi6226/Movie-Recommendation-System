@@ -5,19 +5,27 @@ interface GenreFilterProps {
   selectedGenres: Genre[];
   onToggle: (genre: Genre) => void;
   onClear: () => void;
+  filterByGenreText: string;
+  clearAllText: string;
 }
 
-export function GenreFilter({ selectedGenres, onToggle, onClear }: GenreFilterProps) {
+export function GenreFilter({
+  selectedGenres,
+  onToggle,
+  onClear,
+  filterByGenreText,
+  clearAllText,
+}: GenreFilterProps) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium text-foreground">Filter by Genre</h3>
+        <h3 className="text-sm font-medium text-foreground">{filterByGenreText}</h3>
         {selectedGenres.length > 0 && (
           <button
             onClick={onClear}
             className="text-xs text-secondary hover:text-secondary/80 transition-colors"
           >
-            Clear all
+            {clearAllText}
           </button>
         )}
       </div>

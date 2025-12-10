@@ -8,6 +8,7 @@ interface MovieCardProps {
   onRate: (rating: number) => void;
   className?: string;
   style?: React.CSSProperties;
+  yourRatingText: string;
 }
 
 export function MovieCard({
@@ -16,6 +17,7 @@ export function MovieCard({
   onRate,
   className,
   style,
+  yourRatingText,
 }: MovieCardProps) {
   return (
     <div
@@ -76,7 +78,7 @@ export function MovieCard({
 
           {/* User Rating */}
           <div className="mt-2">
-            <p className="text-xs text-muted-foreground mb-1">Your rating</p>
+            <p className="text-xs text-muted-foreground mb-1">{yourRatingText}</p>
             <StarRating rating={userRating} onRate={onRate} size="sm" />
           </div>
         </div>
