@@ -1,0 +1,173 @@
+export interface Movie {
+  id: number;
+  title: string;
+  year: number;
+  genres: string[];
+  rating: number;
+  poster: string;
+  description: string;
+}
+
+export const genres = [
+  "Action",
+  "Adventure",
+  "Animation",
+  "Comedy",
+  "Crime",
+  "Drama",
+  "Fantasy",
+  "Horror",
+  "Mystery",
+  "Romance",
+  "Sci-Fi",
+  "Thriller",
+] as const;
+
+export type Genre = (typeof genres)[number];
+
+export const movies: Movie[] = [
+  {
+    id: 1,
+    title: "The Dark Knight",
+    year: 2008,
+    genres: ["Action", "Crime", "Drama"],
+    rating: 9.0,
+    poster: "https://images.unsplash.com/photo-1534809027769-b00d750a6bac?w=400&h=600&fit=crop",
+    description: "When the menace known as the Joker wreaks havoc on Gotham, Batman must confront the chaos.",
+  },
+  {
+    id: 2,
+    title: "Inception",
+    year: 2010,
+    genres: ["Action", "Adventure", "Sci-Fi"],
+    rating: 8.8,
+    poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=600&fit=crop",
+    description: "A thief who steals corporate secrets through dream-sharing technology is given the task of planting an idea.",
+  },
+  {
+    id: 3,
+    title: "Interstellar",
+    year: 2014,
+    genres: ["Adventure", "Drama", "Sci-Fi"],
+    rating: 8.6,
+    poster: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=600&fit=crop",
+    description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+  },
+  {
+    id: 4,
+    title: "The Matrix",
+    year: 1999,
+    genres: ["Action", "Sci-Fi"],
+    rating: 8.7,
+    poster: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=600&fit=crop",
+    description: "A computer hacker learns about the true nature of reality and his role in the war against its controllers.",
+  },
+  {
+    id: 5,
+    title: "Pulp Fiction",
+    year: 1994,
+    genres: ["Crime", "Drama"],
+    rating: 8.9,
+    poster: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=600&fit=crop",
+    description: "The lives of two mob hitmen, a boxer, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+  },
+  {
+    id: 6,
+    title: "Spirited Away",
+    year: 2001,
+    genres: ["Animation", "Adventure", "Fantasy"],
+    rating: 8.6,
+    poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=600&fit=crop",
+    description: "A young girl becomes trapped in a strange new world of spirits and must find a way to free herself and her parents.",
+  },
+  {
+    id: 7,
+    title: "The Shining",
+    year: 1980,
+    genres: ["Drama", "Horror"],
+    rating: 8.4,
+    poster: "https://images.unsplash.com/photo-1509248961725-aec71f89d6a4?w=400&h=600&fit=crop",
+    description: "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence.",
+  },
+  {
+    id: 8,
+    title: "La La Land",
+    year: 2016,
+    genres: ["Comedy", "Drama", "Romance"],
+    rating: 8.0,
+    poster: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=600&fit=crop",
+    description: "While navigating their careers in Los Angeles, a pianist and an actress fall in love.",
+  },
+  {
+    id: 9,
+    title: "The Prestige",
+    year: 2006,
+    genres: ["Drama", "Mystery", "Thriller"],
+    rating: 8.5,
+    poster: "https://images.unsplash.com/photo-1503095396549-807759245b35?w=400&h=600&fit=crop",
+    description: "Two stage magicians engage in a competitive rivalry that becomes obsessive and dangerous.",
+  },
+  {
+    id: 10,
+    title: "Fight Club",
+    year: 1999,
+    genres: ["Drama"],
+    rating: 8.8,
+    poster: "https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=400&h=600&fit=crop",
+    description: "An insomniac office worker and a devil-may-care soap maker form an underground fight club.",
+  },
+  {
+    id: 11,
+    title: "Gladiator",
+    year: 2000,
+    genres: ["Action", "Adventure", "Drama"],
+    rating: 8.5,
+    poster: "https://images.unsplash.com/photo-1608346128025-1896b97a6fa7?w=400&h=600&fit=crop",
+    description: "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family.",
+  },
+  {
+    id: 12,
+    title: "Get Out",
+    year: 2017,
+    genres: ["Horror", "Mystery", "Thriller"],
+    rating: 7.7,
+    poster: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+    description: "A young African-American man visits his white girlfriend's parents for the weekend, where his simmering uneasiness turns to terror.",
+  },
+  {
+    id: 13,
+    title: "The Grand Budapest Hotel",
+    year: 2014,
+    genres: ["Adventure", "Comedy", "Crime"],
+    rating: 8.1,
+    poster: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=400&h=600&fit=crop",
+    description: "A writer encounters the owner of an aging high-class hotel, who tells him of his early years as a lobby boy.",
+  },
+  {
+    id: 14,
+    title: "Blade Runner 2049",
+    year: 2017,
+    genres: ["Action", "Drama", "Mystery", "Sci-Fi"],
+    rating: 8.0,
+    poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=600&fit=crop",
+    description: "A young blade runner's discovery of a long-buried secret leads him to track down former blade runner Rick Deckard.",
+  },
+  {
+    id: 15,
+    title: "Parasite",
+    year: 2019,
+    genres: ["Comedy", "Drama", "Thriller"],
+    rating: 8.5,
+    poster: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=600&fit=crop",
+    description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+  },
+  {
+    id: 16,
+    title: "Mad Max: Fury Road",
+    year: 2015,
+    genres: ["Action", "Adventure", "Sci-Fi"],
+    rating: 8.1,
+    poster: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop",
+    description: "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search of her homeland.",
+  },
+];
