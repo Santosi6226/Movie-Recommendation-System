@@ -103,7 +103,7 @@ export const movies: Movie[] = [
     year: 2022,
     genres: ["Action", "Drama", "Mystery"],
     rating: 8.4,
-    poster: "https://images.unsplash.com/photo-1509248961725-aec71f89d6a4?w=400&h=600&fit=crop",
+    poster: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
     description: "A Kambala champion protects his village and nature from powerful forces.",
     language: "Kannada",
   },
