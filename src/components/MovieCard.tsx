@@ -39,6 +39,15 @@ export function MovieCard({
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
+      {/* Language Badge */}
+      {movie.language && (
+        <div className="absolute top-2 right-2 z-10">
+          <span className="px-2 py-1 text-xs font-medium rounded bg-primary/90 text-primary-foreground">
+            {movie.language}
+          </span>
+        </div>
+      )}
+
       {/* Content */}
       <div className="p-4 space-y-3">
         <div>
