@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { getRecommendations } from "@/lib/recommendations";
 import { Header } from "@/components/Header";
 import { GenreFilter } from "@/components/GenreFilter";
+import { LanguageFilter, MovieLanguage } from "@/components/LanguageFilter";
 import { MovieCard } from "@/components/MovieCard";
 import { RecommendationSection } from "@/components/RecommendationSection";
 import { GenrePreferences } from "@/components/GenrePreferences";
@@ -14,6 +15,7 @@ const Index = () => {
   const { ratings, rateMovie, getRating, clearRatings } = useRatings();
   const { language, setLanguage, t } = useLanguage();
   const [selectedGenres, setSelectedGenres] = useState<Genre[]>([]);
+  const [selectedLanguages, setSelectedLanguages] = useState<MovieLanguage[]>([]);
   const { toast } = useToast();
 
   const ratedCount = Object.keys(ratings).length;
@@ -25,11 +27,19 @@ const Index = () => {
   );
 
   const filteredMovies = useMemo(() => {
-    if (selectedGenres.length === 0) return movies;
-    return movies.filter((movie) =>
-      selectedGenres.some((genre) => movie.genres.includes(genre))
-    );
-  }, [selectedGenres]);
+    let filtered = movies;
+    if (selectedGenres.length > 0) {
+      filtered = filtered.filter((movie) =>
+        selectedGenres.some((genre) => movie.genres.includes(genre))
+      );
+    }
+    if (selectedLanguages.length > 0) {
+      filtered = filtered.filter((movie) =>
+        selectedLanguages.includes(movie.language as MovieLanguage)
+      );
+    }
+    return filtered;
+  }, [selectedGenres, selectedLanguages]);
 
   const handleToggleGenre = (genre: Genre) => {
     setSelectedGenres((prev) =>
@@ -41,6 +51,18 @@ const Index = () => {
 
   const handleClearGenres = () => {
     setSelectedGenres([]);
+  };
+
+  const handleToggleLanguage = (lang: MovieLanguage) => {
+    setSelectedLanguages((prev) =>
+      prev.includes(lang)
+        ? prev.filter((l) => l !== lang)
+        : [...prev, lang]
+    );
+  };
+
+  const handleClearLanguages = () => {
+    setSelectedLanguages([]);
   };
 
   const handleRate = (movieId: number, rating: number) => {
@@ -100,6 +122,14 @@ const Index = () => {
               clearAllText={t("clearAll")}
             />
 
+            <LanguageFilter
+              selectedLanguages={selectedLanguages}
+              onToggle={handleToggleLanguage}
+              onClear={handleClearLanguages}
+              filterByLanguageText={t("filterByLanguage")}
+              clearAllText={t("clearAll")}
+            />
+
             {hasRatings && (
               <GenrePreferences
                 ratings={ratings}
@@ -111,8 +141,8 @@ const Index = () => {
           {/* Movie Grid */}
           <section className="space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-foreground">
-                {selectedGenres.length > 0 ? t("filteredMovies") : t("allMovies")}
+            <h2 className="text-xl font-semibold text-foreground">
+                {selectedGenres.length > 0 || selectedLanguages.length > 0 ? t("filteredMovies") : t("allMovies")}
               </h2>
               <span className="text-sm text-muted-foreground">
                 {filteredMovies.length} {filteredMovies.length !== 1 ? t("movies") : t("movie")}
