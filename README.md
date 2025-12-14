@@ -94,15 +94,6 @@ The app includes popular Indian movies across various languages:
 - Node.js (v18 or higher)
 - npm or bun package manager
 
-### Installation
-
-```bash
-# Clone the repository
-git clone <YOUR_GIT_URL>
-
-# Navigate to project directory
-cd <YOUR_PROJECT_NAME>
-
 # Install dependencies
 npm install
 
@@ -110,7 +101,6 @@ npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
 
 ## 🔧 How the Recommendation Engine Works
 
@@ -152,6 +142,3 @@ This project is open source and available under the MIT License.
 - UI components from [shadcn/ui](https://ui.shadcn.com/)
 - Icons from [Lucide](https://lucide.dev/)
 
----
-
-Built with ❤️ using [Lovable](https://lovable.dev)
