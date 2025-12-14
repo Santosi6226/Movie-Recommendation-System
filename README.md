@@ -1,73 +1,157 @@
-# Welcome to your Lovable project
+# 🎬 Indian Movie Recommender
 
-## Project info
+A beautiful, responsive movie recommendation application featuring Indian cinema across multiple languages including Hindi, Tamil, Telugu, Kannada, Malayalam, and Marathi.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## ✨ Features
 
-## How can I edit this code?
+### 🎯 Smart Recommendations
+- **Personalized Suggestions**: Get movie recommendations based on your rating history
+- **Genre-Based Scoring**: The recommendation engine analyzes your genre preferences from rated movies
+- **Similar Movies**: Discover movies similar to ones you've already enjoyed
 
-There are several ways of editing your application.
+### ⭐ Rating System
+- **5-Star Rating**: Rate movies with an intuitive star rating interface
+- **Persistent Storage**: Your ratings are saved locally and persist across sessions
+- **Rating History**: View and manage all your movie ratings
 
-**Use Lovable**
+### 🎭 Genre Filtering
+- Filter movies by multiple genres simultaneously
+- Supported genres: Action, Drama, Romance, Comedy, Thriller, Mystery, Biography, Historical, Family, Musical
+- Visual genre preferences panel showing your top-rated genres
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 🌐 Language Filtering
+- Filter movies by Indian regional languages
+- Supported languages: Hindi, Tamil, Telugu, Kannada, Malayalam, Marathi
+- Multi-select capability for viewing movies from multiple languages
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🌍 Multi-Language UI
+- Interface available in 22 Indian languages
+- Seamless language switching via the header dropdown
+- Fully translated labels, buttons, and descriptions
 
-**Use your preferred IDE**
+### 🎨 Beautiful Design
+- Dark theme with glassmorphism effects
+- Responsive grid layout for all screen sizes
+- Smooth animations and hover effects
+- Movie poster cards with language badges
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠️ Technology Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+| Technology | Purpose |
+|------------|---------|
+| **React 18** | UI Component Library |
+| **TypeScript** | Type Safety |
+| **Vite** | Build Tool & Dev Server |
+| **Tailwind CSS** | Utility-First Styling |
+| **shadcn/ui** | Pre-built UI Components |
+| **Lucide React** | Icon Library |
+| **React Router** | Client-Side Routing |
 
-Follow these steps:
+## 📁 Project Structure
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```
+src/
+├── components/
+│   ├── ui/                    # shadcn/ui components
+│   ├── GenreFilter.tsx        # Genre selection component
+│   ├── GenrePreferences.tsx   # User's genre preferences display
+│   ├── Header.tsx             # App header with language selector
+│   ├── LanguageFilter.tsx     # Language filtering component
+│   ├── LanguageSelector.tsx   # UI language switcher
+│   ├── MovieCard.tsx          # Individual movie display card
+│   ├── NavLink.tsx            # Navigation link component
+│   ├── RecommendationSection.tsx # Personalized recommendations
+│   └── StarRating.tsx         # Interactive star rating
+├── data/
+│   └── movies.ts              # Movie database with 20+ Indian films
+├── hooks/
+│   ├── useLanguage.ts         # UI language management
+│   └── useRatings.ts          # User ratings state management
+├── lib/
+│   ├── i18n.ts                # Internationalization translations
+│   ├── recommendations.ts     # Recommendation algorithm
+│   └── utils.ts               # Utility functions
+├── pages/
+│   ├── Index.tsx              # Main application page
+│   └── NotFound.tsx           # 404 error page
+└── index.css                  # Global styles & design tokens
+```
+
+## 🎬 Featured Movies
+
+The app includes popular Indian movies across various languages:
+
+- **Hindi**: 3 Idiots, Dangal, PK, Lagaan, Drishyam, Andhadhun
+- **Telugu**: Baahubali, RRR, Pushpa
+- **Tamil**: Vikram, Master, Ponniyin Selvan
+- **Kannada**: KGF, Kantara
+- **Malayalam**: Manjummel Boys, Premam, Drishyam
+- **Marathi**: Sairat, Natsamrat
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or bun package manager
+
+### Installation
+
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🔧 How the Recommendation Engine Works
 
-**Use GitHub Codespaces**
+1. **Collect Ratings**: User rates movies on a 1-5 star scale
+2. **Analyze Preferences**: System calculates average ratings per genre
+3. **Score Unrated Movies**: Each unrated movie receives a score based on genre overlap with user preferences
+4. **Rank & Recommend**: Top-scoring movies are presented as recommendations
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```typescript
+// Simplified recommendation logic
+const score = movie.genres.reduce((total, genre) => {
+  const preference = genrePreferences.find(g => g.genre === genre);
+  return total + (preference?.score || 0);
+}, 0) / movie.genres.length;
+```
 
-## What technologies are used for this project?
+## 📱 Responsive Design
 
-This project is built with:
+- **Desktop**: Full sidebar with filters, 3-4 column movie grid
+- **Tablet**: Collapsible sidebar, 2-3 column grid
+- **Mobile**: Stacked layout, single column, touch-friendly controls
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🎨 Design System
 
-## How can I deploy this project?
+The app uses a custom dark theme with CSS custom properties:
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- `--background`: Deep dark background
+- `--primary`: Accent color for interactive elements
+- `--muted`: Subtle backgrounds for cards
+- `--border`: Glassmorphism borders
 
-## Can I connect a custom domain to my Lovable project?
+## 📄 License
 
-Yes, you can!
+This project is open source and available under the MIT License.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🙏 Acknowledgments
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Movie data inspired by popular Indian cinema
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
+
+---
+
+Built with ❤️ using [Lovable](https://lovable.dev)
